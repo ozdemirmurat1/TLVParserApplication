@@ -9,18 +9,37 @@
         static List<TagList> tagListValues = new List<TagList>();
         static void Main(string[] args)
         {
-            
-            Console.Write("Enter value: ");
-            var readHexadecimalValue=Console.ReadLine()!.Replace(" ","");
+            bool repeat = true;
 
-            RecursiveLoopTagValues(readHexadecimalValue);
-
-            foreach (var tag in tagListValues)
+            while (repeat)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Tag: {tag.TagValue}, Length: {tag.HexadecimalTagValue} , TagName: {tag.TagName}, Value: {tag.DecimalTagValue}");
-                Console.ResetColor();
+                Console.Write("Enter value: ");
+                var readHexadecimalValue = Console.ReadLine()!.Replace(" ", "");
+
+                RecursiveLoopTagValues(readHexadecimalValue);
+
+                foreach (var tag in tagListValues)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"Tag: {tag.TagValue}, Length: {tag.HexadecimalTagValue} , TagName: {tag.TagName}, Value: {tag.DecimalTagValue}");
+                    Console.ResetColor();
+                }
+
+                Console.Write("Do you want to enter another value? (Y/N): ");
+                string response = Console.ReadLine()?.Trim().ToUpper();
+
+                if (response != "Y")
+                {
+                    repeat = false;
+                }
+                else
+                {
+                    tagListValues.Clear();
+                }
             }
+            
+
+
         }
 
         // LENGTH'I HEXADECİMAL FORMAT TA DA YAZDIR. PROGRAM DECİMAL YAZDIRIYOR
@@ -53,6 +72,8 @@
             }
         }
 
+        // ÖNEMLİ NOTLAR
+        // & bit operatörü bit düzeyinde işlem gerçekleştirir. İlk 2 biti karşılaştır. AND Operatörü
         // void RecursiveLoopTagValues metodundaki index değişkeni GetTag metoduna  ref anahtar sözcüğüyle değerini atar.
         static string GetTag(string h,ref int index)
         {
@@ -64,7 +85,7 @@
 
                 // 0x1F 00011111 bit decimal 31
 
-                if ((Convert.ToInt32(tag, 16) & 0x1F) == 0x1F)
+                while ((Convert.ToInt32(tag, 16) & 0x1F) == 0x1F)
                 {
                     tag += h.Substring(index, 2);
                     index += 2;
