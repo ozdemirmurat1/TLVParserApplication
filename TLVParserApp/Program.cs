@@ -37,7 +37,7 @@
                     tagListValues.Clear();
                 }
             }
-            
+
 
 
         }
@@ -49,8 +49,8 @@
             while (index < h.Length)
             {
                 string tag = GetTag(h, ref index);
-                int length=(int)GetLength(h, ref index);
-                string hexLengthValue=DecimalToHex(length);
+                int length = (int)GetLength(h, ref index);
+                string hexLengthValue = DecimalToHex(length);
                 string value = h.Substring(index, length * 2);
                 index += length * 2;
 
@@ -75,7 +75,7 @@
         // ÖNEMLİ NOTLAR
         // & bit operatörü bit düzeyinde işlem gerçekleştirir. İlk 2 biti karşılaştır. AND Operatörü
         // void RecursiveLoopTagValues metodundaki index değişkeni GetTag metoduna  ref anahtar sözcüğüyle değerini atar.
-        static string GetTag(string h,ref int index)
+        static string GetTag(string h, ref int index)
         {
             try
             {
@@ -85,7 +85,7 @@
 
                 // 0x1F 00011111 bit decimal 31
 
-                while ((Convert.ToInt32(tag, 16) & 0x1F) == 0x1F)
+                if ((Convert.ToInt32(tag, 16) & 0x1F) == 0x1F)
                 {
                     tag += h.Substring(index, 2);
                     index += 2;
@@ -98,11 +98,11 @@
                 Console.WriteLine(ex.Message);
                 return "";
             }
-            
+
         }
 
         // void RecursiveLoopTagValues metodundaki index değişkeni GetLength metoduna  ref anahtar sözcüğüyle değerini atar.
-        static object GetLength(string h,ref int index)
+        static object GetLength(string h, ref int index)
         {
             try
             {
@@ -126,7 +126,7 @@
                 Console.WriteLine(ex.Message);
                 return "";
             }
-            
+
         }
 
         static bool IsConstructedTag(string tag)
@@ -137,7 +137,7 @@
                 //0x20(yani 32 ondalık veya 00100000 ikilik)
 
                 int firstByte = Convert.ToInt32(tag.Length > 0 ? tag.Substring(0, 2) : "00", 16);
-                bool control= (firstByte & 0x20) == 0x20;
+                bool control = (firstByte & 0x20) == 0x20;
                 return control;
             }
             catch (Exception)
@@ -150,14 +150,14 @@
         {
             try
             {
-                return Convert.ToString(decimalValue, 16).ToUpper().PadLeft(2,'0');
-                
+                return Convert.ToString(decimalValue, 16).ToUpper().PadLeft(2, '0');
+
             }
             catch (Exception)
             {
                 return "";
             }
-            
+
         }
 
 
