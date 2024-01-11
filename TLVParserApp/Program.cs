@@ -10,7 +10,7 @@
         static void Main(string[] args)
         {
             
-            Console.Write("Enter hexadecimal value: ");
+            Console.Write("Enter value: ");
             var readHexadecimalValue=Console.ReadLine()!.Replace(" ","");
 
             RecursiveLoopTagValues(readHexadecimalValue);
