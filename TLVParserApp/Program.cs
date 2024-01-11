@@ -2,6 +2,7 @@
 {
     // UYGULAMA .NET8 e YÜKSELTİLDİ....
     // GETLENGTH GETTAG METOTLARINA TRY EXCEPTİON EKLENECEK.....
+    // GENEL TEST EDİLECEK , TRY EXCEPTİON MEKANİZMALARI
 
     internal class Program
     {
