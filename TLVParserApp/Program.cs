@@ -72,8 +72,9 @@
 
                 return tag;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return "";
             }
             
@@ -99,8 +100,9 @@
 
                 return length;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return "";
             }
             
