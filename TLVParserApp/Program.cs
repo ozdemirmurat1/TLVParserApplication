@@ -126,7 +126,8 @@
         {
             try
             {
-                return Convert.ToString(decimalValue, 16).ToUpper();
+                return Convert.ToString(decimalValue, 16).ToUpper().PadLeft(2,'0');
+                
             }
             catch (Exception)
             {
