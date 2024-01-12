@@ -6,6 +6,7 @@
 
     internal class Program
     {
+
         static List<TagList> tagListValues = new List<TagList>();
         static void Main(string[] args)
         {
